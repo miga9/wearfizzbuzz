@@ -36,7 +36,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/round_button"
             android:gravity="center"
-            android:text="F" />
+            android:text="@string/fizz" />
 
         <Button
             android:id="@+id/fizzbuzz_button"
@@ -46,7 +46,7 @@
             android:layout_marginRight="8dp"
             android:background="@drawable/round_button"
             android:gravity="center"
-            android:text="FB" />
+            android:text="@string/fizzbuzz" />
 
         <Button
             android:id="@+id/buzz_button"
@@ -55,7 +55,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/round_button"
             android:gravity="center"
-            android:text="B" />
+            android:text="@string/buzz" />
 
     </LinearLayout>
 
