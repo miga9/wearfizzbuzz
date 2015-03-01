@@ -1,11 +1,15 @@
 package com.migapro.wearfizzbuzz;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
+
+    private static final int NUMBER_GAME_START = 1;
 
     private int number;
     private Button numberButton;
@@ -15,19 +19,19 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        number = 1;
-
         initView();
+        initNumber();
     }
 
     private void initView() {
         numberButton = (Button) findViewById(R.id.number);
-        numberButton.setText(String.valueOf(number));
         numberButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isNormalNumber()) {
                     updateNumber();
+                } else {
+                    showGameOverDialog();
                 }
             }
         });
@@ -38,6 +42,8 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 if (isFizz()) {
                     updateNumber();
+                } else {
+                    showGameOverDialog();
                 }
             }
         });
@@ -48,6 +54,8 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 if (isFizzBuzz()) {
                     updateNumber();
+                } else {
+                    showGameOverDialog();
                 }
             }
         });
@@ -58,6 +66,8 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 if (isBuzz()) {
                     updateNumber();
+                } else {
+                    showGameOverDialog();
                 }
             }
         });
@@ -81,6 +91,30 @@ public class MainActivity extends Activity {
 
     private void updateNumber() {
         number++;
+        numberButton.setText(String.valueOf(number));
+    }
+
+    private void showGameOverDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.game_over_title)
+                .setMessage(getString(R.string.game_over_message) + number)
+                .setPositiveButton(R.string.game_over_ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        initNumber();
+                    }
+                })
+                .create().show();
+    }
+
+    private void initNumber() {
+        number = NUMBER_GAME_START;
         numberButton.setText(String.valueOf(number));
     }
 }

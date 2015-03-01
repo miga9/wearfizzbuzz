@@ -6,4 +6,8 @@
     <string name="fizz">F</string>
     <string name="fizzbuzz">FB</string>
 
+    <string name="game_over_title">Game Over</string>
+    <string name="game_over_message">"Score: "</string>
+    <string name="game_over_ok">Start Over</string>
+
 </resources>
