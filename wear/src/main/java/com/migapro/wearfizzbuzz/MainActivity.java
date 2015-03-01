@@ -8,6 +8,7 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 
     private int number;
+    private Button numberButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +21,13 @@ public class MainActivity extends Activity {
     }
 
     private void initView() {
-        final Button numberButton = (Button) findViewById(R.id.number);
+        numberButton = (Button) findViewById(R.id.number);
         numberButton.setText(String.valueOf(number));
         numberButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (number % 5 != 0 && number % 3 != 0) {
-                    number++;
-                    numberButton.setText(String.valueOf(number));
+                if (isNormalNumber()) {
+                    updateNumber();
                 }
             }
         });
@@ -36,9 +36,8 @@ public class MainActivity extends Activity {
         fizzButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (number % 5 == 0 && number % 3 != 0) {
-                    number++;
-                    numberButton.setText(String.valueOf(number));
+                if (isFizz()) {
+                    updateNumber();
                 }
             }
         });
@@ -47,9 +46,8 @@ public class MainActivity extends Activity {
         fizzBuzzButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (number % 3 == 0 && number % 5 == 0) {
-                    number++;
-                    numberButton.setText(String.valueOf(number));
+                if (isFizzBuzz()) {
+                    updateNumber();
                 }
             }
         });
@@ -58,11 +56,31 @@ public class MainActivity extends Activity {
         buzzButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (number % 3 == 0 && number % 5 != 0) {
-                    number++;
-                    numberButton.setText(String.valueOf(number));
+                if (isBuzz()) {
+                    updateNumber();
                 }
             }
         });
+    }
+
+    private boolean isNormalNumber() {
+        return number % 5 != 0 && number % 3 != 0;
+    }
+
+    private boolean isFizz() {
+        return number % 5 == 0 && number % 3 != 0;
+    }
+
+    private boolean isFizzBuzz() {
+        return number % 3 == 0 && number % 5 == 0;
+    }
+
+    private boolean isBuzz() {
+        return number % 3 == 0 && number % 5 != 0;
+    }
+
+    private void updateNumber() {
+        number++;
+        numberButton.setText(String.valueOf(number));
     }
 }
