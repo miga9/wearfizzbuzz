@@ -29,19 +29,23 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:gravity="bottom|left"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="F" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:gravity="bottom|center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center"
             android:text="FB" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:gravity="bottom|right"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:text="B" />
 
     </LinearLayout>
