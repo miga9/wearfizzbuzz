@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
     }
 
     private boolean isFizz() {
-        return number % 5 == 0 && number % 3 != 0;
+        return number % 3 == 0 && number % 5 != 0;
     }
 
     private boolean isFizzBuzz() {
@@ -86,7 +86,7 @@ public class MainActivity extends Activity {
     }
 
     private boolean isBuzz() {
-        return number % 3 == 0 && number % 5 != 0;
+        return number % 5 == 0 && number % 3 != 0;
     }
 
     private void updateNumber() {
